@@ -1,0 +1,46 @@
+.top-form {
+    -fx-background-color : #fff;
+    -fx-border-color : #000;
+    -fx-border-width : .4px .4px .2px .4px;
+}
+
+.semi-top-form {
+    -fx-background-color : #efefef;
+    -fx-border-color : #000;
+    -fx-border-width : .2px .4px .4px .4px;
+}
+
+.close {
+    -fx-background-color : transparent;
+    -fx-cursor : hand;
+}
+
+.close:hover {
+    -fx-background-color : red;
+}
+
+.minimize {
+    -fx-background-color : transparent;
+    -fx-cursor : hand;
+}
+
+.minimize:hover {
+    -fx-background-color : #ddd;
+}
+
+.nav-form {
+       -fx-background-color : linear-gradient(to left, #cc75ff, #dda6ff, #dda6ff, #dda6ff, #dda6ff, #cc75ff);
+}
+
+.nav-button {
+       -fx-background-color : transparent;
+       -fx-cursor : hand;
+       -fx-font-size : 16px;
+       -fx-text-fill : #67009e;
+       -fx-font-family : Arial;
+       -fx-alignment : CENTER-LEFT;
+}
+
+.colorViolet {
+    -fx-background-color : linear-gradient(to bottom, #af25ff, #67009e)
+}

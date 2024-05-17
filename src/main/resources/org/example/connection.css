@@ -1,0 +1,39 @@
+.form {
+    -fx-background-color : linear-gradient(to left, #cc75ff, #dda6ff, #dda6ff, #dda6ff, #dda6ff, #cc75ff);
+}
+
+.close {
+    -fx-background-color : transparent;
+    -fx-cursor : hand;
+}
+
+.close:hover {
+    -fx-background-color : red;
+}
+
+.textfield {
+    -fx-background-color : linear-gradient(to bottom, #efefef, #eee);
+    -fx-background-radius : 6px;
+    -fx-font-size : 13px;
+    -fx-border-color : #e100dd;
+    -fx-border-width : 1px;
+    -fx-border-radius : 6px;
+}
+
+.textfield:focused {
+    -fx-background-color : #fff;
+    -fx-border-color : linear-gradient(to left, #b01fff, #db98ff, #db98ff, #db98ff, #db98ff, #b01fff);
+    -fx-border-width : 1px;
+}
+
+.connection {
+    -fx-background-color : linear-gradient(to bottom, #af25ff, #67009e);
+    -fx-border-radius : 5px;
+    -fx-cursor : hand;
+    -fx-text-fill : #fff;
+    -fx-font-size : 14px;
+}
+
+.connection:hover {
+    -fx-background-color : #a91fff;
+}
