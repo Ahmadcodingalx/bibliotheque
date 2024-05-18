@@ -44,3 +44,26 @@
 .colorViolet {
     -fx-background-color : linear-gradient(to bottom, #af25ff, #67009e)
 }
+
+.sign-out {
+    -fx-background-color : transparent;
+    -fx-cursor : hand;
+    -fx-background-radius : 20px;
+}
+
+.sign-out:hover {
+    -fx-background-color : #ff4187;
+}
+
+.shadow {
+    -fx-effect : dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 8, 0, 0, 0);
+}
+
+.white-bg {
+    -fx-background-color : #fff;
+    -fx-background-radius : 8px;
+}
+
+.card {
+    -fx-background-color : linear-gradient(to right, #008eb2, #18d3d3);
+}
