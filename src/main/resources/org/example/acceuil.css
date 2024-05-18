@@ -67,3 +67,55 @@
 .card {
     -fx-background-color : linear-gradient(to right, #008eb2, #18d3d3);
 }
+
+.add-btn {
+    -fx-background-color : #009e3a;
+    -fx-background-radius : 4px;
+    -fx-cursor : hand;
+    -fx-font-size : 14px;
+    -fx-font-family : Arial;
+    -fx-text-fill : #fff;
+}
+
+.add-btn:hover {
+    -fx-background-color : #02802e;
+}
+
+.update-btn {
+    -fx-background-color : #9e588c;
+    -fx-background-radius : 4px;
+    -fx-cursor : hand;
+    -fx-font-size : 14px;
+    -fx-font-family : Arial;
+    -fx-text-fill : #fff;
+}
+
+.update-btn:hover {
+    -fx-background-color : #bc4ca0;
+}
+
+.clear-btn {
+    -fx-background-color : #a8845b;
+    -fx-background-radius : 4px;
+    -fx-cursor : hand;
+    -fx-font-size : 14px;
+    -fx-font-family : Arial;
+    -fx-text-fill : #fff;
+}
+
+.clear-btn:hover {
+    -fx-background-color : #c98c46;
+}
+
+.delete-btn {
+    -fx-background-color : #b94a4a;
+    -fx-background-radius : 4px;
+    -fx-cursor : hand;
+    -fx-font-size : 14px;
+    -fx-font-family : Arial;
+    -fx-text-fill : #fff;
+}
+
+.delete-btn:hover {
+    -fx-background-color : #e84848;
+}
