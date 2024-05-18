@@ -18,154 +18,120 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.livres.Controllers.AccueilController">
    <children>
-      <BorderPane>
-         <top>
-            <AnchorPane prefHeight="45.0" prefWidth="200.0" styleClass="semi-top-form" stylesheets="@../acceuil.css" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@../acceuil.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="418.0" layoutY="177.0" prefHeight="650.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="45.0" prefWidth="200.0" styleClass="semi-top-form" stylesheets="@../acceuil.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="close" layoutX="1054.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="30.0" prefWidth="45.0" styleClass="close" text="X">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="close1" layoutX="1014.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="30.0" prefWidth="40.0" styleClass="minimize" stylesheets="@../acceuil.css" text="--">
+                        <AnchorPane layoutX="36.0" layoutY="-83.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@../acceuil.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="close1" layoutX="1015.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="30.0" prefWidth="40.0" styleClass="minimize" stylesheets="@../acceuil.css" text="--">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
+                        <Button fx:id="close" layoutX="1055.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="30.0" prefWidth="45.0" styleClass="close" stylesheets="@../acceuil.css" text="X">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
-               </children>
-            </AnchorPane>
-         </top>
-         <left>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@../acceuil.css" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="65.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/user-solid.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="65.0" layoutY="139.0" text="Bienvenue" textFill="#67009e">
-                     <font>
-                        <Font name="Arial" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="38.0" layoutY="162.0" stylesheets="@../acceuil.css" text="BiblioADN" textFill="#67009e">
-                     <font>
-                        <Font name="Arial Bold" size="25.0" />
-                     </font>
-                  </Label>
-                  <Line endX="77.5" layoutX="110.0" layoutY="203.0" startX="-100.0" />
-                  <VBox layoutX="8.0" layoutY="205.0">
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@../acceuil.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="nav-button" stylesheets="@../acceuil.css" text="Acceuille">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/gauge-solid.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="nav-button" stylesheets="@../acceuil.css" text="Livres disponible">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/book-solid.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="nav-button" stylesheets="@../acceuil.css" text="Pannier">
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/cart-shopping-solid.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <Button layoutX="20.0" layoutY="563.0" mnemonicParsing="false" stylesheets="@../acceuil.css" text="Déconnecter">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="65.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/right-from-bracket-solid.png" />
+                              <Image url="@../images/user-solid.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="sign-out" />
-                        <String fx:value="shadow" />
-                     </styleClass>
-                  </Button>
-                  <Label layoutX="60.0" layoutY="484.0" />
-               </children>
-            </AnchorPane>
-         </left>
-         <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane layoutX="207.0" layoutY="190.0" prefHeight="605.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <AnchorPane layoutX="11.0" layoutY="11.0" prefHeight="584.0" prefWidth="878.0" stylesheets="@../acceuil.css">
-                           <styleClass>
-                              <String fx:value="white-bg" />
-                              <String fx:value="shadow" />
-                           </styleClass>
+                        <Label layoutX="65.0" layoutY="139.0" text="Bienvenue" textFill="#67009e">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="162.0" stylesheets="@../acceuil.css" text="BiblioADN" textFill="#67009e">
+                           <font>
+                              <Font name="Arial Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <Line endX="77.5" layoutX="110.0" layoutY="203.0" startX="-100.0" />
+                        <VBox layoutX="8.0" layoutY="205.0">
                            <children>
-                              <AnchorPane layoutX="14.0" layoutY="185.0" prefHeight="381.0" prefWidth="460.0" stylesheets="@../acceuil.css">
-                                 <styleClass>
-                                    <String fx:value="shadow" />
-                                    <String fx:value="white-bg" />
-                                 </styleClass>
-                                 <children>
-                                    <AreaChart layoutX="-20.0">
-                                      <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
-                                      </xAxis>
-                                      <yAxis>
-                                        <NumberAxis side="LEFT" />
-                                      </yAxis>
-                                    </AreaChart>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane layoutX="510.0" layoutY="185.0" prefHeight="381.0" prefWidth="350.0" stylesheets="@../acceuil.css">
-                                 <styleClass>
-                                    <String fx:value="shadow" />
-                                    <String fx:value="white-bg" />
-                                 </styleClass>
-                                 <children>
-                                    <BarChart layoutX="-20.0">
-                                      <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
-                                      </xAxis>
-                                      <yAxis>
-                                        <NumberAxis side="LEFT" />
-                                      </yAxis>
-                                    </BarChart>
-                                 </children>
-                              </AnchorPane>
+                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="nav-button" stylesheets="@../acceuil.css" text="Acceuil">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/gauge-solid.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="nav-button" stylesheets="@../acceuil.css" text="Livres disponible">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/book-solid.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="nav-button" stylesheets="@../acceuil.css" text="Pannier">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/cart-shopping-solid.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="11.0" layoutY="11.0" prefHeight="170.0" prefWidth="878.0" stylesheets="@../acceuil.css">
+                        </VBox>
+                        <Button layoutX="20.0" layoutY="563.0" mnemonicParsing="false" stylesheets="@../acceuil.css" text="Déconnecter">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/right-from-bracket-solid.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                            <styleClass>
-                              <String fx:value="white-bg" />
+                              <String fx:value="sign-out" />
                               <String fx:value="shadow" />
                            </styleClass>
+                        </Button>
+                        <Label layoutX="60.0" layoutY="484.0" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="215.0" layoutY="172.0" prefHeight="605.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="151.0" prefWidth="258.0" styleClass="card" stylesheets="@../acceuil.css">
+                              <AnchorPane layoutX="11.0" layoutY="11.0" prefHeight="584.0" prefWidth="878.0" stylesheets="@../acceuil.css">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                              </AnchorPane>
+                              <AnchorPane layoutX="11.0" layoutY="12.0" prefHeight="170.0" prefWidth="878.0" stylesheets="@../acceuil.css">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                              </AnchorPane>
+                              <AnchorPane layoutX="24.0" layoutY="20.0" prefHeight="151.0" prefWidth="258.0" styleClass="card" stylesheets="@../acceuil.css">
                                  <children>
                                     <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/6200023.png" />
-                                       </image></ImageView>
+                                       </image>
+                                    </ImageView>
                                     <Label layoutX="87.0" layoutY="108.0" text="Livres disponible" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="18.0" />
@@ -178,7 +144,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="310.0" layoutY="10.0" prefHeight="151.0" prefWidth="258.0" styleClass="card" stylesheets="@../acceuil.css">
+                              <AnchorPane layoutX="320.0" layoutY="20.0" prefHeight="151.0" prefWidth="258.0" styleClass="card" stylesheets="@../acceuil.css">
                                  <children>
                                     <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -195,8 +161,9 @@
                                           <Font name="Arial Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                 </children></AnchorPane>
-                              <AnchorPane layoutX="606.0" layoutY="10.0" prefHeight="151.0" prefWidth="258.0" styleClass="card" stylesheets="@../acceuil.css">
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="616.0" layoutY="20.0" prefHeight="151.0" prefWidth="258.0" styleClass="card" stylesheets="@../acceuil.css">
                                  <children>
                                     <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="15.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -213,14 +180,47 @@
                                           <Font name="Arial Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                 </children></AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="24.0" layoutY="195.0" prefHeight="381.0" prefWidth="460.0" stylesheets="@../acceuil.css">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <AreaChart layoutX="-27.0" layoutY="-19.0" prefHeight="381.0" prefWidth="473.0" title="Statistique des revenus" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </AreaChart>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="520.0" layoutY="195.0" prefHeight="381.0" prefWidth="350.0" stylesheets="@../acceuil.css">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <BarChart layoutX="-218.0" layoutY="-138.0" prefHeight="381.0" prefWidth="350.0" title="Statistique des clients" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-               </children>
-            </AnchorPane>
-         </center>
-      </BorderPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
    </children>
 </StackPane>
