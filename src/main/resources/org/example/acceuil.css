@@ -174,3 +174,17 @@
     -fx-text-fill : #fff;
     -fx-font-family : Arial;
 }
+
+.info {
+    -fx-background-color : #e1b3ff;
+    -fx-border-radius : 8px;
+    -fx-border-width : 2px;
+    -fx-border-color : #6f00b9;
+    -fx-background-radius : 8px;
+}
+
+.info-label {
+    -fx-background-color : #fff;
+    -fx-background-radius : 4px;
+    -fx-padding : 0 0 0 8px;
+}
