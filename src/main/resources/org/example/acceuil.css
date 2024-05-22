@@ -119,3 +119,58 @@
 .delete-btn:hover {
     -fx-background-color : #e84848;
 }
+
+.textfield {
+    -fx-background-color : linear-gradient( top bottom, #efefef, #eee);
+    -fx-background-radius : 5px;
+    -fx-font-family : Tahoma;
+    -fx-border-color : #000;
+    -fx-border-radius : 5px;
+    -fx-border-width : .4px;
+}
+
+.textfield:focused {
+    -fx-border-color : linear-gradient(to left, #cc75ff, #dda6ff, #dda6ff, #dda6ff, #dda6ff, #cc75ff);
+    -fx-background-color : #fff;
+    -fx-border-width : 1px;
+}
+
+.search {
+    -fx-background-color : transparent;
+    -fx-font-size : 13px;
+    -fx-font-family : Arial;
+    -fx-border-color : linear-gradient(to left, #cc75ff, #dda6ff, #dda6ff, #dda6ff, #dda6ff, #cc75ff);
+    -fx-border-radius : 4px;
+    -fx-border-width : .8px;
+}
+
+.search:focused {
+    -fx-border-width : 1.5px;
+}
+
+.table-view {
+    -fx-background-color : transparent;
+    -fx-border-color : linear-gradient(to left, #cc75ff, #dda6ff, #dda6ff, #dda6ff, #dda6ff, #cc75ff);
+    -fx-border-radius : 8px;
+    -fx-border-width : 2px;
+    -fx-padding : 0px;
+}
+
+.table-view .table-column {
+    -fx-alignment : CENTER;
+}
+
+.table-view .column-header-background {
+    -fx-background-color : linear-gradient(to top, #cc75ff, #dda6ff, #dda6ff, #cc75ff);
+    -fx-background-radius : 8px 8px 0px 0px;
+}
+
+.table-view .column-header, .filter {
+    -fx-background-color : transparent;
+    -fx-size : 40px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill : #fff;
+    -fx-font-family : Arial;
+}
