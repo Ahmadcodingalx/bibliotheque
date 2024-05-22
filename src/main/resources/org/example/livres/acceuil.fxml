@@ -22,7 +22,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.livres.Controllers.AccueilController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.livres.Controllers.AcceuilController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -31,7 +31,7 @@
                   <AnchorPane prefHeight="45.0" prefWidth="200.0" styleClass="semi-top-form" stylesheets="@../acceuil.css" BorderPane.alignment="CENTER">
                      <children>
                         <AnchorPane layoutX="36.0" layoutY="-83.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@../acceuil.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Button fx:id="close1" layoutX="1015.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="30.0" prefWidth="40.0" styleClass="minimize" stylesheets="@../acceuil.css" text="--">
+                        <Button fx:id="close1" layoutX="1015.0" mnemonicParsing="false" onMouseClicked="#minimize" prefHeight="30.0" prefWidth="40.0" styleClass="minimize" stylesheets="@../acceuil.css" text="--">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -94,7 +94,7 @@
                               </Button>
                            </children>
                         </VBox>
-                        <Button fx:id="logout" layoutX="20.0" layoutY="563.0" mnemonicParsing="false" stylesheets="@../acceuil.css" text="Déconnecter">
+                        <Button fx:id="logout" layoutX="20.0" layoutY="563.0" mnemonicParsing="false" onMouseClicked="#logout" stylesheets="@../acceuil.css" text="Déconnecter">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

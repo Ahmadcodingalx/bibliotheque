@@ -19,11 +19,11 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("connection.fxml"));
+//      FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("connection.fxml"));
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("connection.fxml")));
 
-//        Scene scene = new Scene(fxmlLoader.load());
+//      Scene scene = new Scene(fxmlLoader.load());
         Scene scene = new Scene(root);
 
         root.setOnMousePressed((MouseEvent event) ->{
