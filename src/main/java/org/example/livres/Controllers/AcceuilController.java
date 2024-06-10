@@ -1,5 +1,6 @@
 package org.example.livres.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,8 +13,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.example.livres.GetData;
 import org.example.livres.HelloApplication;
 
+import javax.swing.*;
 import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.Objects;
@@ -171,7 +174,45 @@ public class AcceuilController implements Initializable {
     @FXML
     private Label username;
 
-    public void
+    public void displayUsername() {
+        String user = GetData.username;
+        user = user.substring(0, 1).toUpperCase() + user.substring(1);
+        username.setText(user);
+    }
+
+
+    public void switchForm(ActionEvent event) {
+
+        if (event.getSource() == acceuil_btn) {
+            acceuil_form.setVisible(true);
+            livreDispo_form.setVisible(false);
+            pannier_form.setVisible(false);
+
+            acceuil_btn.setStyle("-fx-background-color : linear-gradient(to left, #dda6ff, #cc75ff, #cc75ff, #cc75ff, #dda6ff);");
+            livresDisponible_btn.setStyle("-fx-background-color : transparent;");
+            pannier_btn.setStyle("-fx-background-color : transparent;");
+
+        } else if (event.getSource() == livresDisponible_btn) {
+            acceuil_form.setVisible(false);
+            livreDispo_form.setVisible(true);
+            pannier_form.setVisible(false);
+
+            acceuil_btn.setStyle("-fx-background-color : transparent;");
+            livresDisponible_btn.setStyle("-fx-background-color : linear-gradient(to left, #dda6ff, #cc75ff, #cc75ff, #cc75ff, #dda6ff);");
+            pannier_btn.setStyle("-fx-background-color : transparent;");
+
+        } else if (event.getSource() == pannier_btn) {
+            acceuil_form.setVisible(false);
+            livreDispo_form.setVisible(false);
+            pannier_form.setVisible(true);
+
+            acceuil_btn.setStyle("-fx-background-color : transparent;");
+            livresDisponible_btn.setStyle("-fx-background-color : transparent;");
+            pannier_btn.setStyle("-fx-background-color : linear-gradient(to left, #dda6ff, #cc75ff, #cc75ff, #cc75ff, #dda6ff);");
+
+        }
+
+    }
 
     private double x = 0;
     private double y = 0;
@@ -238,6 +279,6 @@ public class AcceuilController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        displayUsername();
     }
 }

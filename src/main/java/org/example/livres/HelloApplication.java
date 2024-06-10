@@ -31,7 +31,7 @@ public class HelloApplication extends Application {
             y = event.getSceneY();
         });
 
-        root.setOnMouseDragged((MouseEvent event) ->{ //Responsable de l'oppaciter l'orsqu'on traîne l'écran.
+        root.setOnMouseDragged((MouseEvent event) ->{ // Responsable de l'oppaciter l'orsqu'on traîne l'écran.
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
 

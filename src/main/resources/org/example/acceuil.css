@@ -42,7 +42,7 @@
 }
 
 .colorViolet {
-    -fx-background-color : linear-gradient(to bottom, #af25ff, #67009e)
+    -fx-background-color : linear-gradient(to bottom, #af25ff, #67009e);
 }
 
 .sign-out {

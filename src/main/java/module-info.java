@@ -3,6 +3,7 @@ module org.example.livres {
     requires javafx.fxml;
     requires java.sql;
     requires java.desktop;
+    requires javafx.graphics;
 
 
     opens org.example.livres to javafx.fxml;

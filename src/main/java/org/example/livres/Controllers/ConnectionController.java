@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.example.livres.GetData;
 import org.example.livres.HelloApplication;
 import org.example.livres.database;
 
@@ -61,6 +62,7 @@ public class ConnectionController implements Initializable {
 
             Alert alert;
 
+            assert connection != null;
             prepStat = connection.prepareStatement(sqlReq);
             prepStat.setString(1, username.getText());
             prepStat.setString(2, password.getText());
@@ -77,6 +79,8 @@ public class ConnectionController implements Initializable {
                 alert.showAndWait();
 
             } else if (resultSet.next()) { // si le mot de passe et le nom d'utilisateur sont corrects
+
+                GetData.username = username.getText();
 
                 //Une alerte de type INFORMATION
                 alert = new Alert(Alert.AlertType.INFORMATION);
