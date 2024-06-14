@@ -57,7 +57,7 @@
                               <Font name="Arial" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="username" layoutX="38.0" layoutY="162.0" stylesheets="@../acceuil.css" text="BiblioADN" textFill="#6f00b9">
+                        <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="163.0" prefHeight="30.0" prefWidth="191.0" stylesheets="@../acceuil.css" text="BiblioADN" textFill="#6f00b9">
                            <font>
                               <Font name="Arial Bold" size="25.0" />
                            </font>
@@ -117,7 +117,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="acceuil_form" layoutX="215.0" layoutY="172.0" prefHeight="605.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="acceuil_form" layoutX="215.0" layoutY="172.0" prefHeight="605.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="11.0" layoutY="11.0" prefHeight="584.0" prefWidth="878.0" stylesheets="@../acceuil.css">
                                  <styleClass>
@@ -222,7 +222,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="livreDispo_form" layoutX="344.0" layoutY="129.0" prefHeight="605.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="livreDispo_form" layoutX="344.0" layoutY="129.0" prefHeight="605.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="203.0" prefHeight="255.0" prefWidth="265.0" stylesheets="@../acceuil.css">
                                  <styleClass>
@@ -284,7 +284,7 @@
                                           <Image url="@../images/icons8-loupe-26.png" />
                                        </image>
                                     </ImageView>
-                                    <TableView fx:id="livreDispo_tableView" layoutX="5.0" layoutY="49.0" prefHeight="526.0" prefWidth="596.0">
+                                    <TableView fx:id="livreDispo_tableView" layoutX="5.0" layoutY="49.0" onMouseClicked="#bookSelected" prefHeight="526.0" prefWidth="596.0">
                                       <columns>
                                         <TableColumn fx:id="livreDispo_col_ID" prefWidth="57.0" text="ID" />
                                         <TableColumn fx:id="livreDispo_col_Titre" prefWidth="110.0" text="Titre" />
@@ -305,11 +305,11 @@
                                     <ImageView fx:id="livreDispo_imageView" fitHeight="135.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
-                              <Button fx:id="livreDispo_importBtn" layoutX="91.0" layoutY="155.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" styleClass="add-btn" stylesheets="@../acceuil.css" text="Importer" />
-                              <Button layoutX="15.0" layoutY="468.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="265.0" styleClass="add-btn" stylesheets="@../acceuil.css" text="Ajouter" />
-                              <Button layoutX="15.0" layoutY="508.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="265.0" styleClass="update-btn" stylesheets="@../acceuil.css" text="Modifier" />
-                              <Button layoutX="14.0" layoutY="549.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="132.0" styleClass="clear-btn" stylesheets="@../acceuil.css" text="Effacer" />
-                              <Button layoutX="148.0" layoutY="549.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="132.0" styleClass="delete-btn" stylesheets="@../acceuil.css" text="Supprimer" />
+                              <Button fx:id="livreDispo_importBtn" layoutX="91.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#bookImage" prefHeight="25.0" prefWidth="112.0" styleClass="add-btn" stylesheets="@../acceuil.css" text="Importer" />
+                              <Button layoutX="15.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#bookAdd" prefHeight="35.0" prefWidth="265.0" styleClass="add-btn" stylesheets="@../acceuil.css" text="Ajouter" />
+                              <Button layoutX="15.0" layoutY="508.0" mnemonicParsing="false" onMouseClicked="#updateBook" prefHeight="35.0" prefWidth="265.0" styleClass="update-btn" stylesheets="@../acceuil.css" text="Modifier" />
+                              <Button layoutX="14.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#bookClear" prefHeight="35.0" prefWidth="132.0" styleClass="clear-btn" stylesheets="@../acceuil.css" text="Effacer" />
+                              <Button layoutX="148.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#deleteBook" prefHeight="35.0" prefWidth="132.0" styleClass="delete-btn" stylesheets="@../acceuil.css" text="Supprimer" />
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="pannier_form" layoutX="58.0" layoutY="42.0" prefHeight="605.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

@@ -1,5 +1,7 @@
 package org.example.livres.Controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,16 +11,24 @@ import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.example.livres.BookData;
 import org.example.livres.GetData;
 import org.example.livres.HelloApplication;
+import org.example.livres.database;
 
 import javax.swing.*;
 import javax.swing.text.html.ImageView;
+import java.io.File;
 import java.net.URL;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -71,22 +81,22 @@ public class AcceuilController implements Initializable {
     private TextField livreDispo_Titre;
 
     @FXML
-    private TableColumn<?, ?> livreDispo_col_Auteur;
+    private TableColumn<BookData, String> livreDispo_col_Auteur;
 
     @FXML
-    private TableColumn<?, ?> livreDispo_col_Date;
+    private TableColumn<BookData, String> livreDispo_col_Date;
 
     @FXML
-    private TableColumn<?, ?> livreDispo_col_Genre;
+    private TableColumn<BookData, String> livreDispo_col_Genre;
 
     @FXML
-    private TableColumn<?, ?> livreDispo_col_ID;
+    private TableColumn<BookData, String> livreDispo_col_ID;
 
     @FXML
-    private TableColumn<?, ?> livreDispo_col_Prix;
+    private TableColumn<BookData, String> livreDispo_col_Prix;
 
     @FXML
-    private TableColumn<?, ?> livreDispo_col_Titre;
+    private TableColumn<BookData, String> livreDispo_col_Titre;
 
     @FXML
     private AnchorPane livreDispo_form;
@@ -103,7 +113,7 @@ public class AcceuilController implements Initializable {
     private TextField livreDispo_search;
 
     @FXML
-    private TableView<?> livreDispo_tableView;
+    private TableView<BookData> livreDispo_tableView;
 
     @FXML
     private Button livresDisponible_btn;
@@ -174,6 +184,307 @@ public class AcceuilController implements Initializable {
     @FXML
     private Label username;
 
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+    private Connection connection;
+
+    public ObservableList<BookData> BookListe() {
+
+        ObservableList<BookData> listData = FXCollections.observableArrayList();
+        String req = "SELECT * FROM book";
+        connection = database.connectDB();
+
+        try {
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(req);
+            resultSet = preparedStatement.executeQuery();
+
+            BookData bookData;
+
+            while (resultSet.next()) {
+
+                bookData = new BookData(
+                        resultSet.getInt("ID_book"),
+                        resultSet.getString("titre"),
+                        resultSet.getString("auteur"),
+                        resultSet.getString("genre"),
+                        resultSet.getDate("date_de_publication"),
+                        resultSet.getDouble("prix"),
+                        resultSet.getString("image")
+                );
+
+                listData.add(bookData);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listData;
+    }
+
+    private Image images;
+
+    public void BookShow() {
+
+        ObservableList<BookData> availableBookList = BookListe();
+
+        livreDispo_col_ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        livreDispo_col_Titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        livreDispo_col_Auteur.setCellValueFactory(new PropertyValueFactory<>("auteur"));
+        livreDispo_col_Genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        livreDispo_col_Date.setCellValueFactory(new PropertyValueFactory<>("dateDePublication"));
+        livreDispo_col_Prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+
+        livreDispo_tableView.setItems(availableBookList);
+    }
+
+    public  void bookAdd() {
+
+        String sql = "INSERT INTO book (ID_book, titre, auteur, genre, date_de_publication, prix, image) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        connection = database.connectDB();
+
+        try {
+
+            Alert alert;
+
+            if (livreDispo_ID.getText().isEmpty() || livreDispo_Titre.getText().isEmpty() ||
+                    livreDispo_Auteur.getText().isEmpty() || livreDispo_Genre.getText().isEmpty() ||
+                    livreDispo_Date.getValue() == null || livreDispo_Prix.getText().isEmpty() ||
+                    GetData.path == null || GetData.path.isEmpty()) {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Message d'erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("S'il vous plait, remplir tout les champs");
+                alert.showAndWait();
+
+            } else {
+
+                String check = "SELECT ID_book FROM book WHERE ID_book = '" + livreDispo_ID.getText() + "'";
+
+                Statement statement = connection.createStatement();
+                resultSet = statement.executeQuery(check);
+
+                if (resultSet.next()) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Message d'erreur");
+                    alert.setHeaderText(null);
+                    alert.setContentText("ID: " + livreDispo_ID.getText() + " existe dèjà!");
+                    alert.showAndWait();
+                } else {
+
+                    assert connection != null;
+                    preparedStatement = connection.prepareStatement(sql);
+
+                    preparedStatement.setString(1, livreDispo_ID.getText());
+                    preparedStatement.setString(2, livreDispo_Titre.getText());
+                    preparedStatement.setString(3, livreDispo_Auteur.getText());
+                    preparedStatement.setString(4, livreDispo_Genre.getText());
+                    preparedStatement.setString(5, String.valueOf(livreDispo_Date.getValue()));
+                    preparedStatement.setString(6, livreDispo_Prix.getText());
+
+                    String uri = GetData.path;
+                    uri = uri.replace("\\", "\\\\");
+
+                    preparedStatement.setString(7, uri);
+
+                    preparedStatement.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Message d'information");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Ajout réussie");
+                    alert.showAndWait();
+
+                    BookShow();
+                    bookClear();
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void bookClear() {
+
+        livreDispo_ID.setText("");
+        livreDispo_Titre.setText("");
+        livreDispo_Auteur.setText("");
+        livreDispo_Genre.setText("");
+        livreDispo_Date.setValue(null);
+        livreDispo_Prix.setText("");
+
+        GetData.path = "";
+        livreDispo_imageView.setImage(null);
+
+    }
+
+    public void updateBook() {
+
+        String uri = GetData.path;
+        uri = uri.replace("\\", "\\\\");
+
+        String updateReq = "UPDATE book SET ID_book = ?, titre = ?, auteur = ?, genre = ?, date_de_publication = ?, " +
+                "prix = ?, image = ? WHERE ID_book = ?";
+
+        Connection connection = database.connectDB();
+
+        try {
+            Alert alert;
+
+            if (livreDispo_ID.getText().isEmpty() || livreDispo_Titre.getText().isEmpty() ||
+                    livreDispo_Auteur.getText().isEmpty() || livreDispo_Genre.getText().isEmpty() ||
+                    livreDispo_Date.getValue() == null || livreDispo_Prix.getText().isEmpty() ||
+                    GetData.path == null || GetData.path.isEmpty()) {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Message d'erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Remplir tout les champs");
+                alert.showAndWait();
+
+            } else {
+
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Message de confirmation");
+                alert.setHeaderText(null);
+                alert.setContentText("Voulez-vous vraiment modifier ID: " + livreDispo_ID.getText() + " ?");
+
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if (option.get().equals(ButtonType.OK)) {
+
+                    assert connection != null;
+                    preparedStatement = connection.prepareStatement(updateReq);
+
+                    preparedStatement.setString(1, livreDispo_ID.getText());
+                    preparedStatement.setString(2, livreDispo_Titre.getText());
+                    preparedStatement.setString(3, livreDispo_Auteur.getText());
+                    preparedStatement.setString(4, livreDispo_Genre.getText());
+                    preparedStatement.setString(5, String.valueOf(livreDispo_Date.getValue()));
+                    preparedStatement.setString(6, livreDispo_Prix.getText());
+                    preparedStatement.setString(7, uri);
+                    preparedStatement.setString(8, livreDispo_ID.getText());
+
+                    preparedStatement.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Message d'information");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Modifer avec succès!");
+                    alert.showAndWait();
+
+                    BookShow();
+                    bookClear();
+
+                }
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void deleteBook() {
+
+        String sqldelete = "DELETE FROM book WHERE ID_book  = ?";
+
+        Connection connection = database.connectDB();
+
+        try {
+            Alert alert;
+
+            if (livreDispo_ID.getText().isEmpty() || livreDispo_Titre.getText().isEmpty() ||
+                    livreDispo_Auteur.getText().isEmpty() || livreDispo_Genre.getText().isEmpty() ||
+                    livreDispo_Date.getValue() == null || livreDispo_Prix.getText().isEmpty() ||
+                    GetData.path == null || GetData.path.isEmpty()) {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Message d'erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Choisir d'abord le livre à supprimer");
+                alert.showAndWait();
+
+            } else {
+
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Message de confiramtion");
+                alert.setHeaderText(null);
+                alert.setContentText("Voulez-vous vraiment supprimer ID: " +livreDispo_ID.getText()+ " ?");
+
+                Optional<ButtonType> optional = alert.showAndWait();
+
+                if (optional.get().equals(ButtonType.OK)) {
+                    PreparedStatement prepar = connection.prepareStatement(sqldelete);
+                    prepar.setString(1, livreDispo_ID.getText());
+                    prepar.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Message d'information");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Suppression réussie!");
+                    alert.showAndWait();
+
+                    BookShow();
+                    bookClear();
+
+                } else {
+                    return;
+                }
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void bookImage() {
+
+        FileChooser img = new FileChooser();
+        img.setTitle("Ouvrire l'image");
+        img.getExtensionFilters().add(new FileChooser.ExtensionFilter("File image", "*jpg", "*png"));
+
+        File file = img.showOpenDialog(main_form.getScene().getWindow());
+
+        if (file != null) {
+            GetData.path = file.getAbsolutePath();
+
+            images = new Image(file.toURI().toString(), 112, 135, false, true);
+            livreDispo_imageView.setImage(images);
+        }
+
+    }
+
+    public void bookSelected() {
+
+        BookData bookData = livreDispo_tableView.getSelectionModel().getSelectedItem();
+
+        int num = livreDispo_tableView.getSelectionModel().getSelectedIndex();
+
+        if ((num - 1) < -1) { return; }
+
+        livreDispo_ID.setText(String.valueOf(bookData.getID()));
+        livreDispo_Titre.setText(bookData.getTitre());
+        livreDispo_Auteur.setText(bookData.getAuteur());
+        livreDispo_Genre.setText(bookData.getGenre());
+        livreDispo_Date.setValue(LocalDate.parse(String.valueOf(bookData.getDateDePublication())));
+        livreDispo_Prix.setText(String.valueOf(bookData.getPrix()));
+
+        GetData.path = bookData.getImage();
+
+        String uri = "file:" + bookData.getImage();
+
+        images = new Image(uri, 112, 135, false, true);
+        livreDispo_imageView.setImage(images);
+
+    }
+
     public void displayUsername() {
         String user = GetData.username;
         user = user.substring(0, 1).toUpperCase() + user.substring(1);
@@ -200,6 +511,8 @@ public class AcceuilController implements Initializable {
             acceuil_btn.setStyle("-fx-background-color : transparent;");
             livresDisponible_btn.setStyle("-fx-background-color : linear-gradient(to left, #dda6ff, #cc75ff, #cc75ff, #cc75ff, #dda6ff);");
             pannier_btn.setStyle("-fx-background-color : transparent;");
+
+            BookShow();
 
         } else if (event.getSource() == pannier_btn) {
             acceuil_form.setVisible(false);
@@ -280,5 +593,6 @@ public class AcceuilController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         displayUsername();
+        BookShow();
     }
 }
