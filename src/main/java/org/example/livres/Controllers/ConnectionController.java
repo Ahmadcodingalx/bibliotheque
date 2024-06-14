@@ -61,6 +61,7 @@ public class ConnectionController implements Initializable {
 
             Alert alert;
 
+            assert connection != null;
             prepStat = connection.prepareStatement(sqlReq);
             prepStat.setString(1, username.getText());
             prepStat.setString(2, password.getText());

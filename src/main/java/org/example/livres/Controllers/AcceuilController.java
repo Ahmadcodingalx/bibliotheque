@@ -171,7 +171,7 @@ public class AcceuilController implements Initializable {
     @FXML
     private Label username;
 
-    public void
+//    public void
 
     private double x = 0;
     private double y = 0;
