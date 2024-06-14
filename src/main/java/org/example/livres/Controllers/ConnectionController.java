@@ -58,7 +58,6 @@ public class ConnectionController implements Initializable {
         connection = database.connectDB();
 
         try {
-
             Alert alert;
 
             assert connection != null;
